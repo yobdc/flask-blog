@@ -1,4 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
 照片墙
+<script>
+    $(document).keypress(function (e) {
+        if (e.ctrlKey && e.which == 13 || e.which == 10) {
+        } else if (e.shiftKey && e.which == 13 || e.which == 10) {
+        }
+    })
+</script>
 {% endblock %}
