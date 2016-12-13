@@ -2,10 +2,29 @@
 {% block body %}
 照片墙
 <script>
-    $(document).keypress(function (e) {
-        if (e.ctrlKey && e.which == 13 || e.which == 10) {
-        } else if (e.shiftKey && e.which == 13 || e.which == 10) {
+    // $(document).keypress(function (e) {
+    //     if (e.which == 1) {
+    //     	$("#msg").prepend( "Press Down Ctrl+Enter" + '<br>');
+    //     } else if (e.shiftKey && e.which == 13 || e.which == 10) {
+    //     }
+    // })
+    // 为当前文档绑定keydown和mousedown两种事件
+    // 检测鼠标按下了那些键
+    // 检测键盘按下了那些字母按键
+    $(document).bind("keydown mousedown", function(event){
+        var msg = '';
+        if( event.type == "mousedown" ){ // 鼠标按下事件
+            var map = {"1": "左", "2":"中", "3":"右"};
+            msg = '你按下了鼠标[' + map[event.which] + ']键';
+        }else{ // 键盘按下事件
+            if(event.which >= 65 && event.which <= 90){
+                msg = '你按下了键盘[' + String.fromCharCode(event.which) + ']键';
+            }
         }
-    })
+        if(msg){
+            // $("#msg").prepend( msg + '<br>');
+            alert(msg);
+        }
+    });
 </script>
 {% endblock %}
